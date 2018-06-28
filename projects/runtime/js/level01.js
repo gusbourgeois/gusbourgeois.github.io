@@ -24,7 +24,7 @@ var level01 = function (window) {
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(false);
+        game.setDebugMode(!false);
 
         // BEGIN EDITING YOUR CODE HERE
         function createsawblade(x,y) {
@@ -43,14 +43,14 @@ var level01 = function (window) {
         createsawblade(700,360);
         createsawblade(900,470);
         createsawblade(1100,360);
-        
+        function enemy(x,y){
        var enemy = game.createGameItem('enemy',25);
        var redSquare = draw.rect(50,50,'red');
        redSquare.x = -25;
        redSquare.y = -25;
        enemy.addChild(redSquare);
-       enemy.x = 1000;
-       enemy.y = groundY-50;
+       enemy.x = x;
+       enemy.y = y;
        game.addGameItem(enemy);
        enemy.velocityX = - 10;
        enemy.rotationalVelocity = 10;
@@ -64,6 +64,10 @@ var level01 = function (window) {
            game.increaseScore(100);
             enemy.fadeOut();
        };
+        }
+        enemy(1000, groundY-50);
+        enemy(900, groundY-50);
+       enemy(800, groundY-50);
        
        function createmoon(x,y) {
             var hitZoneSize = 25;
